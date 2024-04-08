@@ -1,0 +1,72 @@
+body {
+    font-family: monospace;
+    background-color: rgb(19, 26, 19);
+    color: white;
+}
+
+a {
+    color: white;
+}
+
+.content {
+    position: relative;
+    margin: 2rem auto;
+    max-width: fit-content;
+}
+
+
+table {
+    border-collapse: collapse
+}
+
+tr:not(:last-child) td {
+    border-bottom: 1px solid white;
+}
+
+td:first-child {
+    border-right: 1px solid white;
+    text-align: right;
+}
+
+td:last-child {
+    font-weight: bold;
+}
+
+tr.space-after + tr{
+    height: 1rem;
+    border: none;
+}
+
+tr.space-after td {
+    border-bottom: none;
+}
+
+td {
+    padding: 0.25rem
+}
+
+
+input[type=text], input[type=number], input[type=button], input[type=submit] {
+    background: transparent;
+    border: 1px solid white;
+    font-family: monospace;
+    color: white;
+    padding: 0.25rem;
+    font-size: 1rem;
+}
+
+#delete-button {
+    background-color: rgba(255, 0, 0, 0.1);
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}

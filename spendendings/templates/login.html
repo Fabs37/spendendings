@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {{ project.name }} | Spendendings
+{% endblock %}
+
+{% block content %}
+    <h1>Spendendings</h1>
+    <a href="/">&lt; Back to Project Selection</a>
+    <h2>Welcome (back) to {{ project.name }}</h2>
+    <p>This Alias allows you to change your details later. It won't be shown to anyone else.</p>
+    <p>To change your data, just type in the alias you used previously.</p>
+    <form action="" method="post">
+        <input type="text" placeholder="Alias..." name="alias" required />
+        <input type="submit" value="Go" />
+    </form>
+{% endblock %}

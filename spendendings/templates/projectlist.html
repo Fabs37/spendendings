@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Spendendings
+{% endblock %}
+
+{% block content %}
+    <h1>Spendendings</h1>
+    <!-- <a href="/project/new">New project...</a> -->
+    <h2>Available projects:</h2>
+    {% if show %}
+        <ul id="project-list">
+            {% for item in projects %}
+                <li><a href="/project/{{ item.id }}/">{{ item.name }}</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+    <p><i>Hidden for security's sake</i></p>
+    {% endif %}
+{% endblock %}

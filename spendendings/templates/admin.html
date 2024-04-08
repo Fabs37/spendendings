@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {{ g.project.name }} | Spendendings
+{% endblock %}
+
+{% block content %}
+    <h1>Spendendings</h1>
+    <h2>{{ g.project.name }}</h2>
+    <form action="submit" method="post">
+        <h3>Project name</h3>
+        <input type="text" name="name" value="{{ g.project.name }}" required />
+        <h3>Donation goal</h3>
+        <input type="number" name="goal" value="{{ g.project.goal }}" required />
+        <h3>Estimated contributors</h3>
+        <input type="number" name="estContributors" value="{{ g.project.estContributors }}" required />
+
+        <input type="checkbox" name="minEnabled" id="minCheckbox" {% if g.project.minDon %}checked{% endif %} />
+        <div id="min">
+            <h3>Minimum contribution</h3>
+            <input type="number" name="min" {% if g.project.minDon %}value="{{ g.project.minDon }}"{% endif %} >
+        </div>
+
+        <input type="checkbox" name="maxEnabled" id="maxCheckbox" {% if g.project.maxDon %}checked{% endif %} />
+        <div id="max">
+            <h3>MAximum contribution</h3>
+            <input type="number" name="max" {% if g.project.maxDon %}value="{{ g.project.maxDon }}"{% endif %} >
+        </div>
+    </form>
+
+    <script src="{{ url_for('static', filename='admin.js') }}"></script>
+{% endblock %}

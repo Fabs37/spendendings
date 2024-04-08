@@ -1,0 +1,7 @@
+.venv/
+instance/
+__pycache__/
+dist/
+
+concept.md
+setup.sh

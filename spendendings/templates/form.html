@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {{ project.name }} | Spendendings
+{% endblock %}
+
+{% block content %}
+    <h1>Spendendings</h1>
+    <a href=".">&lt; Back</a>
+    <h2>{{ project.name }} – Stats</h2>
+    <table id="stats">
+        <tr>
+            <td>Goal</td>
+            <td>{{ project.goal }}€</td>
+        </tr>
+        <tr class="space-after">
+            <td>Covered</td>
+            <td>{{ project.coveredMin }}€ – {{ project.coveredMax }}€</td>
+        </tr>
+        <tr></tr>
+        <tr>
+            <td>Expected contributors</td>
+            <td>{{ project.estDons }}</td>
+        </tr>
+        <tr class="space-after">
+            <td>Registered contributors so far</td>
+            <td>{{ project.regDons }}</td>
+        </tr>
+        <tr></tr>
+        <tr>
+            <td>Average donation</td>
+            <td>{{ project.avgDon }}€</td>
+        </tr>
+        <tr>
+            <td>Donation recommendation – from the start assumption</td>
+            <td>{{ project.startRecommendation }}€</td>
+        </tr>
+        <tr>
+            <td>Donation recommendation – from what's left</td>
+            {% if project.liveRecommendationAvailable %}
+            <td>{{ project.liveRecommendationMin }}€ – {{ project.liveRecommendationMax }}€</td>
+            {% else %}
+            <td>–</td>
+            {% endif %}
+        </tr>
+    </table>
+
+    <h2>Your contribution</h2>
+    <form id="delForm" action="delete" method="post">
+        <input type="text" style="display: none;" name="alias" value="{{ project.alias }}" />
+    </form>
+    <form action="{{ project.apiEndpoint }}" method="post">
+        <table>
+            <tr>
+                <td><label for="minValue">Minimum value</label></td>
+                <td><input type="number" id="minValue" step="0.01" min="0" name="minValue" value="{{ project.minCont }}" required /></td>
+            </tr>
+            <tr>
+                <td><label for="maxValue">Maximum value</label></td>
+                <td><input type="number" id="maxValue" step="0.01" min="0" name="maxValue" value="{{ project.maxCont }}" required /></td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="{{ project.submitCaption }}" /></td>
+                {% if project.deletable %}
+                    <td><input type="submit" form="delForm" value="Delete" id="delete-button" /></td>
+                {% endif %}
+            </tr>
+            <input type="text" style="display: none;" name="alias" value="{{ project.alias }}" />
+        </table>
+    </form>
+{% endblock %}

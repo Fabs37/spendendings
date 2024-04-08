@@ -1,0 +1,1 @@
+// handles the checkboxes for min-/max donations
