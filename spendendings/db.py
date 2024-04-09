@@ -2,7 +2,7 @@ import sqlite3
 
 import click, uuid
 from flask import current_app, g, Flask
-import pandas
+from tabulate import tabulate
 
 
 def get_db():
@@ -82,8 +82,11 @@ def delete_project_cmd(projectuuid):
     
 @click.command("list-projects")
 def list_projects_cmd():
-    # [click.echo(str(elem)) for elem in get_db().execute("SELECT uuid, title, goal FROM project").fetchall()]
-    click.echo(pandas.read_sql_query("SELECT uuid, title, goal, estimated_contributors FROM project", get_db()))
+    click.echo(tabulate(
+        get_db().execute("SELECT uuid, title, goal, estimated_contributors FROM project"),
+        ["UUID", "Title", "Goal", "Estimated contributors"],
+        tablefmt="pretty"
+    ))
 
 def init_app(app: Flask):
     app.teardown_appcontext(close_db)

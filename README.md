@@ -11,7 +11,7 @@ git clone https://github.com/Fabs37/spendendings.git
 cd spendendings
 python3 -m venv .venv
 . .venv/bin/activate
-pip install flask pandas waitress
+pip install -r requirements.txt
 flask -A spendendings init-db
 ```
 
