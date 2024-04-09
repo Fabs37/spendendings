@@ -32,7 +32,7 @@ def create_app(test_config=None):
     @app.errorhandler(404)
     @app.errorhandler(400)
     def err4xx(message):
-        return render_template("error.html", name=message.name, code=message.code, msg=message.description), message.code
+        return render_template("error.html", name=message.name, code=message.code, msg=message.description, supressgh=True), message.code
     
     return app
 

@@ -6,11 +6,28 @@
         <title>{% block title %}{% endblock %}</title>
         <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
         <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
+        <script>
+            var fancy = null;
+
+            function togglefancy() {
+                if(fancy === null) {
+                    fancy = document.createElement("style");
+                    fancy.innerHTML = "*:hover { animation: rainbow 4s linear 0s infinite; }"
+                    document.body.appendChild(fancy)
+                } else {
+                    fancy.remove();
+                    fancy = null
+                }
+            }
+        </script>
     </head>
 
     <body>
         <div class="content">
             {% block content %}{% endblock %}
+            {% if not supressgh %}
+                <p id="gh-link">View source on <a href="https://github.com/Fabs37/spendendings" target="_blank">GitHub</a> | <a href="javascript:togglefancy()">Toggle fancy mode</a></p>
+            {% endif %}
         </div>
     </body>
 </html>

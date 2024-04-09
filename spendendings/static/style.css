@@ -2,10 +2,27 @@ body {
     font-family: monospace;
     background-color: rgb(19, 26, 19);
     color: white;
+    font-size: 20px;
 }
 
 a {
     color: white;
+}
+
+@keyframes rainbow {
+    0% {color: red;}
+    17% {color: orange;}
+    33% {color: yellow;}
+    50% {color: green;}
+    67%  {color: blue;}
+    83% {color: purple;}
+    100% {color: red;}
+
+}
+
+#gh-link {
+    margin-top: 3rem;
+    text-align: center;
 }
 
 .content {
