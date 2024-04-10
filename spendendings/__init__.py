@@ -10,7 +10,11 @@ def create_app(test_config=None):
     )
     
     if test_config is None:
-        app.config.from_pyfile("config.py", silent=False)
+        if not os.path.exists(os.path.join(app.instance_path, "config.py")):
+            import _defaultconfig
+            app.config.from_object(_defaultconfig)
+        else:
+            app.config.from_pyfile("config.py")
     else:
         app.config.from_mapping(test_config)
         
