@@ -11,8 +11,8 @@ def create_app(test_config=None):
     
     if test_config is None:
         if not os.path.exists(os.path.join(app.instance_path, "config.py")):
-            import _defaultconfig
-            app.config.from_object(_defaultconfig)
+            import spendendings._defaultconfig
+            app.config.from_object(spendendings._defaultconfig)
         else:
             app.config.from_pyfile("config.py")
     else:
